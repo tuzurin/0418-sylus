@@ -459,6 +459,88 @@
       font-weight: 800;
     }
 
+    .stock-note-inline {
+      display: inline;
+    }
+
+    .stock-note-mobile {
+      display: none;
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .stock-tip {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      margin-left: 6px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      color: #1a1013;
+      background: linear-gradient(135deg, var(--gold2), var(--gold4));
+      border: 1px solid rgba(255, 244, 207, .45);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+      cursor: help;
+      vertical-align: middle;
+    }
+
+    .stock-tip-text {
+      position: absolute;
+      right: 0;
+      bottom: calc(100% + 10px);
+      min-width: 210px;
+      max-width: 260px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(18, 12, 16, .96);
+      border: 1px solid rgba(215, 184, 106, .32);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .35);
+      color: rgba(255, 255, 255, .88);
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: left;
+      white-space: normal;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
+      pointer-events: none;
+      z-index: 30;
+      transform: translateY(4px);
+    }
+
+    .stock-tip-text::after {
+      content: "";
+      position: absolute;
+      right: 10px;
+      top: 100%;
+      border-width: 6px;
+      border-style: solid;
+      border-color: rgba(18, 12, 16, .96) transparent transparent transparent;
+    }
+
+    .stock-tip:hover .stock-tip-text,
+    .stock-tip:focus-visible .stock-tip-text {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 560px) {
+      .stock-note-inline {
+        display: none;
+      }
+
+      .stock-note-mobile {
+        display: block;
+      }
+    }
+
     @media (max-width: 760px) {
       .slot-grid {
         grid-template-columns: 1fr;
@@ -573,7 +655,7 @@
                 <li>備取1：雪龍（1人）@sekilyu</li>
                 <li>備取2：小瑄（1人）@kiskiss711</li>
                 <li>備取3：倉鼠（1人）@0724_michelle</li>
-                <li>備取4：Neko（2人）@neko0418_</li>
+
               </ul>
               <div class="slot-note">此時段候補較多，建議改選其他可報名時段。</div>
             </div>
@@ -629,10 +711,12 @@
           <div class="slot-card">
             <div class="slot-head">
               <div class="slot-time">15:45–16:00</div>
-              <span class="slot-badge open">可報名</span>
+              <span class="slot-badge open">可報名1人</span>
             </div>
             <div class="slot-body">
-              此時段目前開放登記。
+              <ul>
+                <li>正取：齊格（1人）@sieg52400</li>
+              </ul>
             </div>
           </div>
 
@@ -651,10 +735,13 @@
           <div class="slot-card">
             <div class="slot-head">
               <div class="slot-time">16:15–16:30</div>
-              <span class="slot-badge open">可報名</span>
+              <span class="slot-badge full">已額滿</span>
             </div>
             <div class="slot-body">
-              此時段目前開放登記。
+              <ul>
+                <li>正取：秀秀（1人）@barbie760723</li>
+                <li>正取2：朔月兔（小兔）（1人）@saginokou</li>
+              </ul>
             </div>
           </div>
 
@@ -674,10 +761,12 @@
           <div class="slot-card">
             <div class="slot-head">
               <div class="slot-time">16:45–17:00</div>
-              <span class="slot-badge open">可報名</span>
+              <span class="slot-badge full">已額滿</span>
             </div>
             <div class="slot-body">
-              此時段目前開放登記。
+              <ul>
+                <li>正取：Neko（2人）@neko0418_</li>
+              </ul>
             </div>
           </div>
 
@@ -752,7 +841,7 @@
               <tr>
                 <th style="width:36%;">贏取條件</th>
                 <th>應援品項</th>
-                <th style="width:22%; text-align:right;">預計數量</th>
+                <th style="width:36%; text-align:right;">預計應援數量</th>
               </tr>
             </thead>
             <tbody>
@@ -769,30 +858,62 @@
               <tr>
                 <td>贏莊家 11~15 點以上（含 11 點、豹子）</td>
                 <td>龍晴項鍊</td>
-                <td style="text-align:right;">10 + 50（友列限定｜超額5）</td>
+                <td style="text-align:right;">
+                  10 + 50
+                  <span class="stock-note-inline">
+                    <span class="stock-tip" tabindex="0">🪙
+                      <span class="stock-tip-text">+以後的量不含在獎單內｜超額5</span>
+                    </span>
+                  </span>
+                  <div class="stock-note-mobile">（+以後的量不含在獎單內｜超額5）</div>
+                </td>
               </tr>
               <tr>
                 <td>贏莊家 11~15 點以上（含 11 點、豹子）</td>
                 <td>秦徹夫人包</td>
-                <td style="text-align:right;">10 + 20（友列限定｜超額1）</td>
+                <td style="text-align:right;">
+                  10 + 20
+                  <span class="stock-note-inline">
+                    <span class="stock-tip" tabindex="0">🪙
+                      <span class="stock-tip-text">+以後的量不含在獎單內｜超額1</span>
+                    </span>
+                  </span>
+                  <div class="stock-note-mobile">（+以後的量不含在獎單內｜超額1）</div>
+                </td>
               </tr>
 
               <tr>
                 <td>贏莊家 7~10 點以上（含 7 點、豹子）</td>
                 <td>伯飾盒</td>
-                <td style="text-align:right;">20 + 20（友列限定｜超額15）</td>
+                <td style="text-align:right;">
+                  20 + 20
+                  <span class="stock-note-inline">
+                    <span class="stock-tip" tabindex="0">🪙
+                      <span class="stock-tip-text">+以後的量不含在獎單內｜超額15</span>
+                    </span>
+                  </span>
+                  <div class="stock-note-mobile">（+以後的量不含在獎單內｜超額15）</div>
+                </td>
               </tr>
 
               <tr>
                 <td>贏莊家 3~6 點以上（含 3 點、豹子）</td>
                 <td>金屬決策幣</td>
-                <td style="text-align:right;">30 + 20（友列限定｜超額35）</td>
+                <td style="text-align:right;">
+                  30 + 20
+                  <span class="stock-note-inline">
+                    <span class="stock-tip" tabindex="0">🪙
+                      <span class="stock-tip-text">+以後的量不含在獎單內｜超額35</span>
+                    </span>
+                  </span>
+                  <div class="stock-note-mobile">（+以後的量不含在獎單內｜超額35）</div>
+                </td>
               </tr>
 
               <tr>
                 <td>贏莊家 1~3 點以上（含 1 點、豹子）</td>
                 <td>流光薔薇骰子（紅 / 黑各一顆）</td>
-                <td style="text-align:right;">50 + 45（友列限定）</td>
+                <td style="text-align:right;">50 + 45（+以後的量不含在獎單內）</td>
               </tr>
 
               <tr>
